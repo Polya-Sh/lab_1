@@ -12,22 +12,19 @@
       <children>
          <TextField fx:id="cels" prefHeight="26.0" prefWidth="70.0" />
          <Label text="Цельсия" />
-         <Button fx:id="button_cels" mnemonicParsing="false" onAction="#buttom_cels" text="Конвертировать" />
       </children>
    </HBox>
    <HBox prefHeight="100.0" prefWidth="200.0">
       <children>
          <TextField fx:id="kelv" prefHeight="26.0" prefWidth="70.0" />
          <Label text="Кельвин" />
-         <Button fx:id="button_kelv" mnemonicParsing="false" onAction="#button_kelv" text="Конвертировать" />
       </children>
    </HBox>
    <HBox prefHeight="100.0" prefWidth="200.0">
       <children>
          <TextField fx:id="farng" prefHeight="26.0" prefWidth="70.0" />
          <Label text="Фарингейт" />
-         <Button fx:id="button_farng" mnemonicParsing="false" onAction="#button_farng" text="Конвертировать" />
       </children>
    </HBox>
-   <Button fx:id="output" mnemonicParsing="false" onAction="#click_output" text="Button" />
+   <Button fx:id="output" mnemonicParsing="false" onAction="#click_output" text="Насколько холодно" />
 </VBox>

@@ -1,5 +1,8 @@
 package org.example.lab_1;
 
+import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -20,31 +23,6 @@ public class HelloController {
     private TextField farng;
 
 
-
-    @FXML
-    protected void buttom_cels(){
-        convert.set_cels(Double.parseDouble(cels.getText()));
-        convert.convertCels();
-        kelv.setText(String.valueOf(convert.get_kelv()));
-        farng.setText(String.valueOf(convert.get_farng()));
-
-    }
-
-    @FXML
-    protected void button_kelv(){
-        convert.set_kelv(Double.parseDouble(kelv.getText()));
-        convert.convertKelv();
-        cels.setText(String.valueOf(convert.get_cels()));
-        farng.setText(String.valueOf(convert.get_farng()));
-    }
-
-    @FXML
-    public void button_farng() {
-        convert.set_farng(Double.parseDouble(farng.getText()));
-        convert.convertFarng();
-        cels.setText(String.valueOf(convert.get_cels()));
-        kelv.setText(String.valueOf(convert.get_kelv()));
-    }
 
     public void click_output(ActionEvent actionEvent) {
         try {
@@ -72,5 +50,6 @@ public class HelloController {
         } else if (convert.get_cels() > 20){
             output.setText("Жарко");
         }
-    }
+
+            }
 }
