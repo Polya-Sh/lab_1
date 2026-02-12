@@ -29,4 +29,5 @@
          <Button fx:id="button_farng" mnemonicParsing="false" onAction="#button_farng" text="Конвертировать" />
       </children>
    </HBox>
+   <Button fx:id="output" mnemonicParsing="false" onAction="#click_output" text="Button" />
 </VBox>
