@@ -23,6 +23,7 @@ public class ConverterModel {
             }
         });
 
+
         _kelv.addListener((obs, oldVal, newVal) -> {
             if (!updating) {
                 updating = true;
