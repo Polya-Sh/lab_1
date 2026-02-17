@@ -1,17 +1,17 @@
 package org.example.lab_1;
 
-import javafx.beans.property.SimpleDoubleProperty;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
+import javafx.util.converter.NumberStringConverter;
 
-public class HelloController {
-    ConverterModel convert=new ConverterModel();
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class HelloController implements Initializable {
+    ConverterModel convert = new ConverterModel();
 
     @FXML
     public Button output;
@@ -22,34 +22,32 @@ public class HelloController {
     @FXML
     private TextField farng;
 
-
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        cels.textProperty().bindBidirectional(convert._celsProperty(), new NumberStringConverter());
+        kelv.textProperty().bindBidirectional(convert._kelvProperty(), new NumberStringConverter());
+        farng.textProperty().bindBidirectional(convert._farngProperty(), new NumberStringConverter());
+    }
 
     public void click_output(ActionEvent actionEvent) {
         try {
-            convert.set_kelv(Double.parseDouble(kelv.getText()));
-        } catch (NumberFormatException e) {
-            output.setText("Введите хотя бы одно значение");
-        }
-        try {
-            convert.set_cels(Double.parseDouble(cels.getText()));
-        } catch (NumberFormatException e) {
-            output.setText("Введите хотя бы одно значение");
-        }
-        try {
-            convert.set_farng(Double.parseDouble(farng.getText()));
-        } catch (NumberFormatException e) {
-            output.setText("Введите хотя бы одно значение");
-        }
-        ;
-        if (convert.get_cels() <= -20) {
-            output.setText("Холодно");
-        } else if (convert.get_cels()>-20 && convert.get_cels()<10){
-            output.setText("Прохладно");
-        } else if (convert.get_cels()>=10 && convert.get_cels()<=20) {
-            output.setText("Нормально");
-        } else if (convert.get_cels() > 20){
-            output.setText("Жарко");
-        }
+            double celsius = convert.get_cels();
 
+            if (celsius <= -20) {
+                output.setText("Холодно");
+                output.setStyle("-fx-background-color: blue;");
+            } else if (celsius > -20 && celsius < 10) {
+                output.setText("Прохладно");
+                output.setStyle("-fx-background-color: lightblue;");
+            } else if (celsius >= 10 && celsius <= 20) {
+                output.setText("Нормально");
+                output.setStyle("-fx-background-color: lightgreen;");
+            } else if (celsius > 20) {
+                output.setText("Жарко");
+                output.setStyle("-fx-background-color: lightred;");
             }
+        } catch (Exception e) {
+            output.setText("Ошибка");
+        }
+    }
 }
