@@ -36,9 +36,37 @@ public class HelloController implements Initializable {
     }
 
     public void click_output(ActionEvent actionEvent) {
+        String celsiusText = cels.getText().trim();
+
+        if (celsiusText.isEmpty() || !celsiusText.matches("^-?\\d+[.,]?\\d*$")) {
+            output.setText("Некорректный ввод");
+            output.setStyle("-fx-background-color: gray;");
+            return;
+        }
+
+        String kelvinText = kelv.getText().trim();
+
+        if (kelvinText.isEmpty() || !kelvinText.matches("^-?\\d+[.,]?\\d*$")) {
+            output.setText("Некорректный ввод");
+            output.setStyle("-fx-background-color: gray;");
+            return;
+        }
+        String faringText = farng.getText().trim();
+
+        if (faringText.isEmpty() || !faringText.matches("^-?\\d+[.,]?\\d*$")) {
+            output.setText("Некорректный ввод");
+            output.setStyle("-fx-background-color: gray;");
+            return;
+        }
+
 
         try {
-            double celsius = Double.parseDouble(cels.getText());
+            celsiusText = celsiusText.replace(',', '.');
+            double celsius = Double.parseDouble(celsiusText);
+            kelvinText = kelvinText.replace(',', '.');
+            double kelvin = Double.parseDouble(celsiusText);
+            faringText = faringText.replace(',', '.');
+            double faring = Double.parseDouble(faringText);
 
             if (celsius <= -20) {
                 output.setText("Холодно");
